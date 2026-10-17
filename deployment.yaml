@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+  namespace: platform-lab
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+        - name: python-app
+          image: ghcr.io/admin12344321/second-pipe-repo:sha-469ba191b1995f122ac69d6f1425bf0392a1d000
+          ports:
+            - containerPort: 5000
